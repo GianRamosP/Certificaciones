@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="./output.css" rel="stylesheet" />
+    <link href="/src/output.css" rel="stylesheet" />
+    <title>Certificaciones</title>
   </head>
   <body>
     <section class="bg-gray-50 dark:bg-gray-900">
@@ -98,13 +99,13 @@
         if (dni === validDni && password === validPassword) {
           errorMessage.classList.add("hidden");
           // Redirigir a la nueva página
-          window.location.href = "success.html";
+          window.location.href = "src/success.html";
         }
         // Validar credenciales para el segundo set
         else if (dni === validDni_none && password === validPassword_none) {
           errorMessage.classList.add("hidden");
           // Redirigir a la nueva página
-          window.location.href = "success_none.html";
+          window.location.href = "src/success_none.html";
         } else {
           errorMessage.classList.remove("hidden");
         }
