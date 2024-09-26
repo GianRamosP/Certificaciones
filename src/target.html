@@ -1,60 +1,115 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./src/output.css" rel="stylesheet" />
     <title>Certificaciones</title>
-    <link rel="stylesheet" href="output.css" />
   </head>
   <body>
-    <section class="bg-gray-100 dark:bg-gray-800 py-10">
-      <div class="container mx-auto text-center">
-        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-8">
-          Medallas
-        </h2>
-        <div class="flex flex-wrap justify-center gap-6">
-          <!-- Medalla 1 -->
-          <div class="flex flex-col items-center">
-            <img
-              class="w-32 h-auto"
-              src="../assets/img/medalla1.webp"
-              alt="Medalla 1"
-              oncontextmenu="return false;"
-            />
-            <p class="mt-2 text-gray-900 dark:text-white">Medalla 1</p>
-          </div>
-          <!-- Medalla 2 -->
-          <div class="flex flex-col items-center">
-            <img
-              class="w-32 h-auto"
-              src="../assets/img/medalla2.webp"
-              alt="Medalla 2"
-              oncontextmenu="return false;"
-            />
-            <p class="mt-2 text-gray-900 dark:text-white">Medalla 2</p>
-          </div>
-          <!-- Medalla 3 -->
-          <div class="flex flex-col items-center">
-            <img
-              class="w-32 h-auto"
-              src="../assets/img/medalla3.webp"
-              alt="Medalla 3"
-              oncontextmenu="return false;"
-            />
-            <p class="mt-2 text-gray-900 dark:text-white">Medalla 3</p>
-          </div>
-          <!-- Medalla 4 (agregada a la siguiente fila automáticamente si la pantalla es pequeña) -->
-          <div class="flex flex-col items-center">
-            <img
-              class="w-32 h-auto"
-              src="../assets/img/medalla4.webp"
-              alt="Medalla 4"
-              oncontextmenu="return false;"
-            />
-            <p class="mt-2 text-gray-900 dark:text-white">Medalla 4</p>
+    <section class="bg-gray-50 dark:bg-gray-900">
+      <div
+        class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0"
+      >
+        <a
+          href="#"
+          class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white"
+        >
+          <img
+            class="w-8 h-8 mr-2"
+            src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg"
+            alt="logo"
+          />
+          Certificaciones
+        </a>
+        <div
+          class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700"
+        >
+          <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+            <h1
+              class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white"
+            >
+              Ingrese credenciales
+            </h1>
+            <form class="space-y-4 md:space-y-6" id="loginForm">
+              <div>
+                <label
+                  for="dni"
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >DNI</label
+                >
+                <input
+                  type="text"
+                  name="dni"
+                  id="dni"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="00000000"
+                  required=""
+                />
+              </div>
+              <div>
+                <label
+                  for="password"
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >Clave</label
+                >
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  placeholder="••••••••"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  required=""
+                />
+              </div>
+              <div id="errorMessage" class="text-red-500 text-sm hidden">
+                Credenciales incorrectas.
+              </div>
+              <button
+                type="submit"
+                class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+              >
+                Ingresar
+              </button>
+            </form>
           </div>
         </div>
       </div>
     </section>
+
+    <script>
+      const form = document.getElementById("loginForm");
+      const errorMessage = document.getElementById("errorMessage");
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        // Credenciales correctas
+        const validDni = "72451849";
+        const validPassword = "code123";
+
+        const validDni_none = "78461232";
+        const validPassword_none = "code123";
+
+        // Obtener valores ingresados
+        const dni = document.getElementById("dni").value;
+        const password = document.getElementById("password").value;
+
+        // Validar credenciales para el primer set
+        if (dni === validDni && password === validPassword) {
+          errorMessage.classList.add("hidden");
+          // Redirigir a la nueva página
+          window.location.href = "/src/success.html";
+        }
+        // Validar credenciales para el segundo set
+        else if (dni === validDni_none && password === validPassword_none) {
+          errorMessage.classList.add("hidden");
+          // Redirigir a la nueva página
+          window.location.href = "/src/success_none.html";
+        } else {
+          errorMessage.classList.remove("hidden");
+        }
+      });
+    </script>
   </body>
 </html>
